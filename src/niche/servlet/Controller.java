@@ -55,7 +55,7 @@ public class Controller extends HttpServlet {
 			u.setDescription("taedikoalam");
 			request.setAttribute("user", u);
 			
-			String rm = request.getParameter("rm");
+			String rm = request.getParameter("remember");
 			if(rm != null) {
 				Cookie usernameCookie = new Cookie("username", username);
 				usernameCookie.setMaxAge(60*60*24*21);

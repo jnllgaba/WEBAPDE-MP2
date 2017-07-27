@@ -3,9 +3,16 @@ var toggle = false;
 
 
 $(function () {
+    
+    $('.logout-form-wrapper').hide();
+    
     $('.login-form-wrapper').hide();
     $('#login').click(function () {
         $('.login-form-wrapper').slideToggle();
+    });
+    
+    $('#logout').click(function () {
+        $('.logout-form-wrapper').slideToggle();
     });
     
     $('#add-tag').click(function () {
@@ -60,11 +67,3 @@ $(function () {
     });
     
 })
-
-/*
-<div class = "upload-tag-container"> 
-<div class = "upload-tag">
-<label class = "upload-tag-title"> Hello </label>
-<i id = "delete-tag" class = "fa fa-close"> </i>
-</div>  
-*/

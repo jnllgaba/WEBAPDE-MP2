@@ -1,20 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<%-- <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
-	PROFILE <br>
-	Saya mo, ${sessionScope.sessionuser}. <br>
-	
-	<br> <a href="logout">Log out</a>
-	<%@ include file="index.html" %>
-</body>
-</html> --%>
-
 <html>
 
 <head>
@@ -57,20 +43,21 @@
             
             <div class = "nav-right">
                 <div class = "nav-login">
-                    <div id = "login" class = "nav-item nav-link"> 
+                    <div id = "logout" class = "nav-item nav-link"> 
                         ${sessionScope.sessionuser}
                         <i class="nav-icon fa fa-user-circle fa-1x"> </i> 
                     </div>
-                    <div class = "login-form-wrapper"> 
-                        <form class = "login-form">
-                            <label class = "login-label"> username</label>
-                            <input class = "login-field" name = "username" type="text"> <br>
-                            <label class = "login-label"> password</label>
-                            <input class = "login-field" name = "password" type="password"> <br>
-                            <input class = "login-button" type='submit' value = "Login"/> <br>
-                            <input class = "login-check" name = "remember" type="checkbox"> Remember me <br>
-                            <a class = "login-link" href = "register.html"> New Here? Click here to Register! </a>
-                        </form>
+                    <div class = "logout-form-wrapper"> 
+                            <div class = "logout-form">
+                            <a href = "profile.html" class = "logout-row">
+                                <i class = "fa fa-user-o"> </i>
+                                <label class = "logout-label"> Profile </label>
+                            </a>
+                            <a href = "index.html" class = 'logout-row'>
+                                <i class = "fa fa-sign-out"></i>
+                                <label class = "logout-label"> Logout </label>
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <div id = "about" class = "nav-item nav-link">
@@ -81,9 +68,9 @@
          <div class = "main-content-container">
              <div class = "menu-container">
                 posts:
-                 <a id = "public" class = "menu-button menu-button-selected" href = "index.html"> <i class = "fa fa-globe fa-3x"> </i> public</a>
+                 <a id = "public" class = "menu-button" href= "user-public.jsp"> <i class = "fa fa-globe fa-3x"> </i> public</a>
                  <div class = "divider"> </div>
-                 <a id = "shared" href = "photos.html" class = "menu-button"> <i class = "fa fa-user-circle fa-3x"> </i> shared </a>
+                 <a id = "user-private" href = "photos.html" class = "menu-button menu-button-selected"> <i class = "fa fa-lock fa-3x"> </i> private </a>
              </div>
             <div class = "post-container">
                  <div class = "post">

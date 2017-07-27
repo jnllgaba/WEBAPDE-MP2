@@ -222,8 +222,8 @@
                         <label class = "upload-label">
                         choose file
                         </label>
-                        <input name = "file" id = "file" class = "upload-pic-field" type=file accept="image/*">
-                        <label for="file"> <i class = "fa fa-image"> </i> JPEG, GIF, PNG files </label>  
+                        <input name = "file" id = "file" class = "upload-pic-field" type=file accept=".jpeg, .jpg, .png, .tif, .tiff">
+                        <label for="file"> <i class = "fa fa-image"> </i> .JPG, .PNG, .TIFF files </label>  
                     </div>
                     <div class = "upload-row">
                         <label class = "upload-label">

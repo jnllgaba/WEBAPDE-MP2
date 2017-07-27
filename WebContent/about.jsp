@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 
 <head>
@@ -39,15 +42,16 @@
             <div class = "nav-right">
                 <div class = "nav-login">
                     <div id = "logout" class = "nav-item nav-link"> 
-                        name
+                        ${sessionScope.sessionuser}
                         <i class="nav-icon fa fa-user-circle fa-1x"> </i> 
                     </div>
                     <div class = "logout-form-wrapper"> 
                             <div class = "logout-form">
-                            <a href = "profile.html" class = "logout-row">
+                            <form action="profile.jsp">
+                            <input type="submit" class = "logout-row" value="Profile">
                                 <i class = "fa fa-user-o"> </i>
-                                <label class = "logout-label"> Profile </label>
-                            </a>
+                             <!--    <label class = "logout-label"> Feed </label> -->
+                            </form>
                             <a href = "index.html" class = 'logout-row'>
                                 <i class = "fa fa-sign-out"></i>
                                 <label class = "logout-label"> Logout </label>
@@ -71,8 +75,10 @@
                         <h1 class = "about-title">
                         About niche.
                          </h1>
-                         <p class = "about-defn">  <b> niche (n.) </b>  is balh blah lorem ipsumn kasi mahaba talaga to buti pa to may label b kayo joke lang labyu anuna </p>
-                         <p class = "about-desc"> Niche description ano ba yan madali lang yan eh mali kayo parang may mali kayo aan eggcelent life is a beach ano ba yan ang init dito dapat nakasuit and tie kayo wala na yung IST eh </p>
+                         <p class = "about-defn">  <b> niche (n.) </b>  a place, employment, status, or activity for which a person or thing is best fitted </p>
+                         <p class = "about-desc" style="text-align:justify"> "niche." was developed in accordance to the specifications of the second Machine Problem for WEBAPDE. The group was tasked  
+                         								to create a web application that allows its users to share images publicly and privately to a chosen set of users with the use
+                         								of various web development tools such as HTML, CSS, JS, JSP EL, and Servlets.</p>
                          <p class = "about-passed"> Passed by: <br>
                          <label class = "about-member"> Paragas, Sean </label> <br>
                         <label class ="about-member"> Ticug, Jonal Ray </label> <br>

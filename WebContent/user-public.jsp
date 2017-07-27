@@ -50,10 +50,11 @@
                     </div>
                     <div class = "logout-form-wrapper"> 
                             <div class = "logout-form">
-                            <a href = "profile.html" class = "logout-row">
+                            <form action="profile.jsp">
+                            <input type="submit" class = "logout-row" value="Profile">
                                 <i class = "fa fa-user-o"> </i>
-                                <label class = "logout-label"> Profile </label>
-                            </a>
+                             <!--    <label class = "logout-label"> Feed </label> -->
+                            </form>
                             <a href = "index.html" class = 'logout-row'>
                                 <i class = "fa fa-sign-out"></i>
                                 <label class = "logout-label"> Logout </label>
@@ -61,17 +62,22 @@
                         </div>
                     </div>
                 </div>
-                <div id = "about" class = "nav-item nav-link">
-                    <i class="nav-icon fa fa-question-circle-o"></i>
+               <div id = "about" class = "nav-item nav-link">
+               <form action="about.jsp">
+               	   <input type="submit" value="about">
+                   <!--  <i class="nav-icon fa fa-question-circle-o"></i> -->
+               </form>
                 </div>
             </div>
         </nav>
          <div class = "main-content-container">
              <div class = "menu-container">
                 posts:
-                 <a id = "public" class = "menu-button menu-button-selected" href = "user-public.html"> <i class = "fa fa-globe fa-3x"> </i> public</a>
+                 <a id = "public" class = "menu-button menu-button-selected" href = "user-public.jsp"> <i class = "fa fa-globe fa-3x"> </i> public</a>
                  <div class = "divider"> </div>
-                 <a id = "private" href = "user-private.html" class = "menu-button"> <i class = "fa fa-lock fa-3x"> </i> private </a>
+                 <form action="user-private.jsp">
+                 	<input type="submit" id = "private" value="private" class = "menu-button">
+                 </form>
              </div>
             <div class = "post-container">
                  <div class = "post">
@@ -222,8 +228,8 @@
                         <label class = "upload-label">
                         choose file
                         </label>
-                        <input name = "file" id = "file" class = "upload-pic-field" type=file accept="image/*">
-                        <label for="file"> <i class = "fa fa-image"> </i> JPEG, GIF, PNG files </label>  
+                        <input name = "file" id = "file" class = "upload-pic-field" type=file accept=".jpeg, .jpg, .png, .tif, .tiff">
+                        <label for="file"> <i class = "fa fa-image"> </i> .JPG, .PNG, .TIFF files </label>  
                     </div>
                     <div class = "upload-row">
                         <label class = "upload-label">

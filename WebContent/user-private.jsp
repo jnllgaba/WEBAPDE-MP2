@@ -49,10 +49,11 @@
                     </div>
                     <div class = "logout-form-wrapper"> 
                             <div class = "logout-form">
-                            <a href = "profile.html" class = "logout-row">
+                            <form action="profile.jsp">
+                            <input type="submit" class = "logout-row" value="Profile">
                                 <i class = "fa fa-user-o"> </i>
-                                <label class = "logout-label"> Profile </label>
-                            </a>
+                             <!--    <label class = "logout-label"> Feed </label> -->
+                            </form>
                             <a href = "index.html" class = 'logout-row'>
                                 <i class = "fa fa-sign-out"></i>
                                 <label class = "logout-label"> Logout </label>
@@ -61,14 +62,19 @@
                     </div>
                 </div>
                 <div id = "about" class = "nav-item nav-link">
-                    <i class="nav-icon fa fa-question-circle-o"></i>
+                <form action="about.jsp">
+               	   <input type="submit" value="about">
+                   <!--  <i class="nav-icon fa fa-question-circle-o"></i> -->
+               </form>
                 </div>
             </div>
         </nav>
          <div class = "main-content-container">
              <div class = "menu-container">
                 posts:
-                 <a id = "public" class = "menu-button" href= "user-public.jsp"> <i class = "fa fa-globe fa-3x"> </i> public</a>
+                <form action="user-public.jsp">
+                 	<input type="submit" id = "public" value="public" class = "menu-button">
+                 </form>
                  <div class = "divider"> </div>
                  <a id = "user-private" href = "photos.html" class = "menu-button menu-button-selected"> <i class = "fa fa-lock fa-3x"> </i> private </a>
              </div>
@@ -221,8 +227,8 @@
                         <label class = "upload-label">
                         choose file
                         </label>
-                        <input name = "file" id = "file" class = "upload-pic-field" type=file accept="image/*">
-                        <label for="file"> <i class = "fa fa-image"> </i> JPEG, GIF, PNG files </label>  
+                        <input name = "file" id = "file" class = "upload-pic-field" type=file accept=".jpeg, .jpg, .png, .tif, .tiff">
+                        <label for="file"> <i class = "fa fa-image"> </i> .JPEG, .PNG, .TIFF files </label>  
                     </div>
                     <div class = "upload-row">
                         <label class = "upload-label">

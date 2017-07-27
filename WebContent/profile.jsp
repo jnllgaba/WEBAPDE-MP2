@@ -37,7 +37,6 @@
     <div id = "viewport">
         <div class = "nav-bg"> </div>
         <nav class = "nav-bar">
-            
             <div class = "nav-left">
                 <a class = "nav-home" href = "index.html">
                     <img class = "nav-main-icon" src ="res/icon.png"> 
@@ -57,20 +56,22 @@
             
             <div class = "nav-right">
                 <div class = "nav-login">
-                    <div id = "login" class = "nav-item nav-link"> 
+                    <div id = "logout" class = "nav-item nav-link"> 
                         ${sessionScope.sessionuser}
                         <i class="nav-icon fa fa-user-circle fa-1x"> </i> 
                     </div>
-                    <div class = "login-form-wrapper"> 
-                        <form class = "login-form">
-                            <label class = "login-label"> username</label>
-                            <input class = "login-field" name = "username" type="text"> <br>
-                            <label class = "login-label"> password</label>
-                            <input class = "login-field" name = "password" type="password"> <br>
-                            <input class = "login-button" type='submit' value = "Login"/> <br>
-                            <input class = "login-check" name = "remember" type="checkbox"> Remember me <br>
-                            <a class = "login-link" href = "register.html"> New Here? Click here to Register! </a>
-                        </form>
+                    <div class = "logout-form-wrapper"> 
+                            <div class = "logout-form">
+                            <form action="user-public.jsp">
+                            <input type="submit" class = "logout-row" value="Feed">
+                                <i class = "fa fa-user-o"> </i>
+                             <!--    <label class = "logout-label"> Feed </label> -->
+                            </form>
+                            <a href = "index.html" class = 'logout-row'>
+                                <i class = "fa fa-sign-out"></i>
+                                <label class = "logout-label"> Logout </label>
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <div id = "about" class = "nav-item nav-link">
@@ -79,210 +80,69 @@
             </div>
         </nav>
          <div class = "main-content-container">
-             <div class = "menu-container">
-                posts:
-                 <a id = "public" class = "menu-button menu-button-selected" href = "index.html"> <i class = "fa fa-globe fa-3x"> </i> public</a>
-                 <div class = "divider"> </div>
-                 <a id = "shared" href = "photos.html" class = "menu-button"> <i class = "fa fa-user-circle fa-3x"> </i> shared </a>
+             <div class = "profile-info-container">
+                 <p class = "profile-label profile-username-label">
+                    @username
+                 </p>
+                 
+                 <p class = "profile-label profile-description-label">
+                    description
+                 </p>
              </div>
-            <div class = "post-container">
-                 <div class = "post">
-                    <a class = "post-title-link" href="#"> <p class = "post-title"> This is a long title HAHA </p></a> 
-                     <a class = "post-username-link" href="#"> <p class = "post-username"> @username </p> </a>
-                    <p class = "post-desc"> Lorem ipsum bang bang </p>
+             <div class = "profile-post-container">
+                    <div class = "profile-posts post-container">
+                    <div class = "post">
+                        <a class = "post-title-link" href="#"> <p class = "post-title"> This is a long title it takes up almost two lines </p></a> 
+                         <a class = "post-username-link" href="#"> <p class = "post-username"> @username </p> </a>
+                        <p class = "post-desc"> Hello, world! </p>
 
-                    <img class = "post-image" src ="res/dummy/300.png"/>
+                        <img class = "post-image" src ="res/dummy/300.png"/>
 
-                    <div class = "tag-container">
-                        tags:
-                        <div class = "tag">
-                        random
-                        </div>
+                        <div class = "tag-container">
+                            tags:
+                            <div class = "tag">
+                            random
+                            </div>
 
-                        <div class = "tag">
-                        scifi
-                        </div>
-                        <div class = "tag">
-                        scifi
+                            <div class = "tag">
+                            scifi
+                            </div>
+                            <div class = "tag">
+                            scifi
+                            </div>
+                        </div>         
+                    </div>
+                        
+                    <div class = "post">
+                        <a class = "post-title-link" href="#"> <p class = "post-title"> This is a long title it takes up almost two lines </p></a> 
+                         <a class = "post-username-link" href="#"> <p class = "post-username"> @username </p> </a>
+                        <p class = "post-desc"> Hello, world! </p>
+
+                        <img class = "post-image" src ="res/dummy/300.png"/>
+
+                        <div class = "tag-container">
+                            tags:
+                            <div class = "tag">
+                            random
+                            </div>
+
+                            <div class = "tag">
+                            scifi
+                            </div>
+                            <div class = "tag">
+                            scifi
+                            </div>
                         </div>
                     </div>
                 </div>
-                
-                <div class = "post">
-                    <a class = "post-title-link" href="#"> <p class = "post-title"> This is a long title it takes up almost two lines </p></a> 
-                     <a class = "post-username-link" href="#"> <p class = "post-username"> @username </p> </a>
-                    <p class = "post-desc"> Hello, world! </p>
-
-                    <img class = "post-image" src ="res/dummy/300.png"/>
-
-                    <div class = "tag-container">
-                        tags:
-                        <div class = "tag">
-                        random
-                        </div>
-
-                        <div class = "tag">
-                        scifi
-                        </div>
-                        <div class = "tag">
-                        scifi
-                        </div>
-                    </div>
+                <div class = "more-container">
+                    <p class = "more-message">
+                        View more photos
+                        <i class = "fa fa-arrow-down"></i>
+                    </p>
                 </div>
-                
-                 <div class = "post">
-                    <a class = "post-title-link" href="#"> <p class = "post-title"> This is a long title </p></a> 
-                     <a class = "post-username-link" href="#"> <p class = "post-username"> @username </p> </a>
-                    <p class = "post-desc"> Lorem ipsum bang bang </p>
-
-                    <img class = "post-image" src ="res/dummy/300.png"/>
-
-                    <div class = "tag-container">
-                        tags:
-                        <div class = "tag">
-                        random
-                        </div>
-
-                        <div class = "tag">
-                        scifi
-                        </div>
-                        <div class = "tag">
-                        scifi
-                        </div>
-                    </div>
-                </div>
-                
-                <div class = "post">
-                    <a class = "post-title-link" href="#"> <p class = "post-title"> This is a long title </p></a> 
-                     <a class = "post-username-link" href="#"> <p class = "post-username"> @username </p> </a>
-                    <p class = "post-desc"> Lorem ipsum bang bang </p>
-
-                    <img class = "post-image" src ="res/dummy/300.png"/>
-
-                    <div class = "tag-container">
-                        tags:
-                        <div class = "tag">
-                        random
-                        </div>
-
-                        <div class = "tag">
-                        scifi
-                        </div>
-                        <div class = "tag">
-                        scifi
-                        </div>
-                    </div>
-                </div>
-                <div class = "post">
-                    <a class = "post-title-link" href="#"> <p class = "post-title"> This is a long title </p></a> 
-                     <a class = "post-username-link" href="#"> <p class = "post-username"> @username </p> </a>
-                    <p class = "post-desc"> Lorem ipsum bang bang </p>
-
-                    <img class = "post-image" src ="res/dummy/300.png"/>
-
-                    <div class = "tag-container">
-                        tags:
-                        <div class = "tag">
-                        random
-                        </div>
-
-                        <div class = "tag">
-                        scifi
-                        </div>
-                        <div class = "tag">
-                        scifi
-                        </div>
-                    </div>
-                </div>
-                
-                <div class = "post">
-                    <a class = "post-title-link" href="#"> <p class = "post-title"> This is a long title </p></a> 
-                     <a class = "post-username-link" href="#"> <p class = "post-username"> @username </p> </a>
-                    <p class = "post-desc"> Lorem ipsum bang bang </p>
-
-                    <img class = "post-image" src ="res/dummy/300.png"/>
-
-                    <div class = "tag-container">
-                        tags:
-                        <div class = "tag">
-                        random
-                        </div>
-
-                        <div class = "tag">
-                        scifi
-                        </div>
-                        <div class = "tag">
-                        scifi
-                        </div>
-                    </div>
-                </div>
-            </div>
-             
-             
-            <div class = "more-container">
-                <p class = "more-message">
-                    View more public photos
-                    <i class = "fa fa-arrow-down"></i>
-                </p>
-            </div>
-        </div>
-         <div class = "upload-container">
-            <div class = "upload">
-                <form class = "upload-form">
-                    <label class = "upload-title"> upload photo </label>
-                    <div class = "upload-row">
-                        <label class = "upload-label">
-                        choose file
-                        </label>
-                        <input name = "file" id = "file" class = "upload-pic-field" type=file accept="image/*">
-                        <label for="file"> <i class = "fa fa-image"> </i> JPEG, GIF, PNG files </label>  
-                    </div>
-                    <div class = "upload-row">
-                        <label class = "upload-label">
-                            title </label>
-                        <input name = "title" class = "upload-field" type ="text">
-                    </div>
-
-                    <div class = "upload-row">
-                        <label name = "description" class = "upload-label">
-                        description </label>
-                    <input placeholder = "optional" class = "upload-field" type ="text"> 
-                    </div>
-                    
-
-                    <div class = "upload-row">
-                        <label name = "description" class = "upload-label">
-                        visibility </label>
-                        <input name = "visible" value = "public" class = "upload-box" type = "checkbox">
-                        public
-                        <input name = "visible" value = "private" class = "upload-box" type = "checkbox">
-                        private
-                    </div>
-
-                    <div class = "upload-row">
-                        <label class = "upload-label">
-                            add tag
-                        </label>                        
-                        <input id="tag-field" class = "upload-field" type ="text"> 
-                        <button id = "add-tag" class = "upload-button" type = "button"> <i class = "fa fa-plus"> </i> </button>
-                    </div>
-
-                    <div class = "upload-row">
-                        <label class = "upload-label"> tags </label>
-                        <div class = "upload-tag-container"> 
-                        </div>
-                    </div>
-                    
-                    <button class = "upload-button" type = "submit" id = "upload"> <i class = "fa fa fa-upload"> </i> Upload </button>
-                  </form>
              </div>
-            <div class = "upload-bg">
-             </div>
-         </div>
-
-        <div class = "add-container">
-            <button class = "add-photo"> <i class = "fa fa-plus"> </i> </button>
-        </div>
+        </div>  
         </div>
     </body>
 </html>

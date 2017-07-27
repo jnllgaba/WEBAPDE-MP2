@@ -11,8 +11,5 @@ import niche.bean.User;
 public class NicheCollection {
 
 	public static void getAllUsers() {
-		List<User> users = new ArrayList<User>();
-		
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("mysqldb");
 	}
 }

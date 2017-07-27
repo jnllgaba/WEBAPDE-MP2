@@ -16,14 +16,14 @@ import niche.bean.User;
 /**
  * Servlet implementation class Controller
  */
-@WebServlet("/controller")
-public class Controller extends HttpServlet {
+@WebServlet("/home")
+public class HomeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Controller() {
+    public HomeController() {
         super();
         // TODO Auto-generated constructor stub
     }

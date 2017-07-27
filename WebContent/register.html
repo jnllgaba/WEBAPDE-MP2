@@ -41,7 +41,7 @@
                         login
                         <i class="nav-icon fa fa-user-circle fa-1x"> </i> 
                     </div>
-                    <div class = "login-form-wrapper"> 
+                    <div class = "login-form-wrapper" action="home" method="POST"> 
                         <form class = "login-form">
                             <label class = "login-label"> username</label>
                             <input class = "login-field" name = "username" type="text"> <br>
@@ -49,8 +49,10 @@
                             <input class = "login-field" name = "password" type="password"> <br>
                             <input class = "login-button" type='submit' value = "Login"/> <br>
                             <input class = "login-check" name = "remember" type="checkbox"> Remember me <br>
-                            <a class = "login-link" href = "register.html"> New Here? Click here to Register! </a>
                         </form>
+                        <form action="register.html">
+                        	<input type="submit" value="New Here? Click here to Register!">
+                        </form> 
                     </div>
                 </div>
                 <div id = "about" class = "nav-item nav-link">
@@ -62,7 +64,7 @@
             <div class = "reg-container">
                 <p class = "reg-title"> Registration </p>
                 
-                <form class = "reg-form">
+                <form class = "reg-form" action="index.html">
                     <div class = "reg-row">  
                         <label class = "reg-label"> username </label>
                         <input name = "username" class = "reg-field" type="text"> <br>
@@ -76,7 +78,6 @@
                         <input class = "reg-field" name = "description" type="text"> <br>
                     </div>
                         <input class = "reg-submit" value = "register" type = "submit">
-
                 </form>
              </div>
         </div>

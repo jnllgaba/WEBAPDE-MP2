@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 
 <head>
@@ -39,15 +42,16 @@
             <div class = "nav-right">
                 <div class = "nav-login">
                     <div id = "logout" class = "nav-item nav-link"> 
-                        name
+                        ${sessionScope.sessionuser}
                         <i class="nav-icon fa fa-user-circle fa-1x"> </i> 
                     </div>
                     <div class = "logout-form-wrapper"> 
                             <div class = "logout-form">
-                            <a href = "profile.html" class = "logout-row">
+                            <form action="profile.jsp">
+                            <input type="submit" class = "logout-row" value="Profile">
                                 <i class = "fa fa-user-o"> </i>
-                                <label class = "logout-label"> Profile </label>
-                            </a>
+                             <!--    <label class = "logout-label"> Feed </label> -->
+                            </form>
                             <a href = "index.html" class = 'logout-row'>
                                 <i class = "fa fa-sign-out"></i>
                                 <label class = "logout-label"> Logout </label>

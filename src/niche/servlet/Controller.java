@@ -62,7 +62,7 @@ public class Controller extends HttpServlet {
 				response.addCookie(usernameCookie);
 			}
 			
-			RequestDispatcher rd = request.getRequestDispatcher("homepage.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("profile.jsp");
 			rd.forward(request, response);
 		} else {
 			response.sendRedirect("index.html");

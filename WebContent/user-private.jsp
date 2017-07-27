@@ -1,7 +1,10 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 
 <head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title> niche </title>
 <link href="styles/styles.css" rel="stylesheet" type="text/css">
 <link href="lib/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -41,7 +44,7 @@
             <div class = "nav-right">
                 <div class = "nav-login">
                     <div id = "logout" class = "nav-item nav-link"> 
-                        name
+                        ${sessionScope.sessionuser}
                         <i class="nav-icon fa fa-user-circle fa-1x"> </i> 
                     </div>
                     <div class = "logout-form-wrapper"> 
@@ -65,9 +68,9 @@
          <div class = "main-content-container">
              <div class = "menu-container">
                 posts:
-                 <a id = "public" class = "menu-button menu-button-selected" href = "user-public.html"> <i class = "fa fa-globe fa-3x"> </i> public</a>
+                 <a id = "public" class = "menu-button" href= "user-public.jsp"> <i class = "fa fa-globe fa-3x"> </i> public</a>
                  <div class = "divider"> </div>
-                 <a id = "private" href = "user-private.html" class = "menu-button"> <i class = "fa fa-lock fa-3x"> </i> private </a>
+                 <a id = "user-private" href = "photos.html" class = "menu-button menu-button-selected"> <i class = "fa fa-lock fa-3x"> </i> private </a>
              </div>
             <div class = "post-container">
                  <div class = "post">

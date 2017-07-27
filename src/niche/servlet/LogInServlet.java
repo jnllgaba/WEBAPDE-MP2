@@ -34,7 +34,7 @@ public class LogInServlet extends HttpServlet {
 			for(Cookie c: cookies) {
 				if(c.getName().equals("username")) {
 					 request.getSession().setAttribute("sessionuser", c.getValue());
-					 request.getRequestDispatcher("profile.jsp").forward(request, response);
+					 request.getRequestDispatcher("user-public.jsp").forward(request, response);
 					 found = true;
 				}
 			}

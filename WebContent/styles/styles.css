@@ -412,7 +412,6 @@
     font-family: 'Open Sans';
     text-align: center;
     cursor: pointer;
-    margin: 100px;
 }
 
 .post-container:hover post:not(:hover) {
@@ -703,4 +702,143 @@
     display: flex;
     flex-wrap: wrap;
     margin-top: 10px;
+}
+
+.profile-info-container {
+    position: fixed;
+    top: 100px;
+    border-style: solid;
+    border-color: black;
+    width: 22%;
+    padding: 10px;
+    font-family: 'Open Sans';
+    border-width: 1;
+}
+
+.profile-post-container {
+    width: 70%;
+    left: 30%;
+    position: absolute;
+}
+
+.profile-username-label {
+    font-family: 'Vollkorn';
+    font-size: 25px;
+    margin: 10px;
+    text-align: center;
+}
+
+.profile-description-label {
+    text-align: justify;
+    font-size: 20px;
+}
+
+
+.about-container {
+    margin-top: 40px;
+}
+
+.about-title {
+    font-size: 50px;
+    text-align: center;
+    font-family: "Vollkorn"
+}
+
+.about-defn {
+    font-size: 25px;
+    font-family: "Vollkorn";
+    font-style: italic;
+}
+
+.about-desc {
+    font-size: 20px;
+    font-family: 'Raleway';
+}
+
+.about-passed {
+    font-size: 20px;
+    font-family: 'Raleway';
+    transition: 1s;
+}
+
+.about-member:hover {
+    text-decoration: underline;
+}
+
+.about-info {
+    background-color: white;
+    opacity: 0.8;
+    margin: 50px;
+    padding: 10px;
+    width: 60%;
+    margin: auto;
+}
+.image {
+    width:auto;
+    height: auto;
+}
+
+.photo-container {
+    margin: 0 auto;
+    width: 60%;
+    height: 100%;
+    margin-top: 100px;
+    font-family: 'Open Sans';
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.info-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.info-container .tag-container {
+    margin-left: 20px;
+}
+
+.photo-name {
+    margin-left: 20px;
+    font-size: 30px;
+    text-decoration: none;
+    color: black;
+}
+
+.photo-title {
+    margin-left: 20px;
+    font-size: 50px;
+    font-family: 'Vollkorn';
+}
+
+.photo-desc {
+    margin-left: 20px;
+    font-size: 20px;
+}
+
+.photo-container a {
+    text-decoration: none;
+}
+
+.photo-container a:hover {
+    text-decoration: underline;
+}
+
+.image {
+    border-style: solid;
+    padding: 10px;
+}
+
+.back {
+    font-family: 'Open sans';
+    color: black;
+    text-decoration: none;
+    font-size: 30px;
+    position: fixed;
+    top: 75px;
+}
+
+.back:hover {
+    border-bottom-style: solid;
 }

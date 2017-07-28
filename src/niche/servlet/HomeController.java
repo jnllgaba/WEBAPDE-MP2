@@ -18,7 +18,7 @@ import niche.collection.NicheCollection;
 /**
  * Servlet implementation class Controller
  */
-@WebServlet(urlPatterns= {"/home", "/register"})
+@WebServlet(urlPatterns= {"/login", "/register"})
 public class HomeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -43,6 +43,37 @@ public class HomeController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		String urlpattern = request.getServletPath();
+		System.out.println(urlpattern);
+		switch(urlpattern) {
+			case "/login": checkUser(request, response);
+							break;
+			case "/register": addUser(request, response);
+							break;
+		}
+		
+	}
+
+	private void addUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		String username = request.getParameter("regusername");
+		String password = request.getParameter("regpassword");
+		String description = request.getParameter("description");
+		
+		User u = new User();
+		u.setUsername(username);
+		u.setPassword(password);
+		u.setDescription(description);
+		
+		if(NicheCollection.addUser(u)) 
+			System.out.println("WIE REGISTERED KANA");
+			
+		response.sendRedirect("index.html");
+		
+	}
+
+	private void checkUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		
@@ -50,14 +81,14 @@ public class HomeController extends HttpServlet {
 		boolean registered = false;
 		for(User u: users) {
 			if(username.equals(u.getUsername()) && password.equals(u.getPassword())) {
-				request.setAttribute("un", username);
+				request.setAttribute("un", u.getUsername());
 				
 				HttpSession session = request.getSession();
-				session.setAttribute("sessionuser", username);
+				session.setAttribute("sessionuser", u.getUsername());
 				
 				String rm = request.getParameter("remember");
 				if(rm != null) {
-					Cookie usernameCookie = new Cookie("username", username);
+					Cookie usernameCookie = new Cookie("username", u.getUsername());
 					usernameCookie.setMaxAge(60*60*24*21);
 					response.addCookie(usernameCookie);
 				}
@@ -67,9 +98,9 @@ public class HomeController extends HttpServlet {
 				registered = true;
 			} 
 		}
+		
 		if(!registered)
 			response.sendRedirect("index.html");
-		
 	}
 
 }

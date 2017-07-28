@@ -9,13 +9,13 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 
-import niche.bean.*;
+import niche.bean.Allowed;
 
 public class AllowedCollection 
 {
 /******************        ALLOWED USERS TABLE METHODS        ******************/	
 	
-	public static List<Allowed> getAllowedUsers() {
+	public static List<Allowed> getAllAllowedUsers() {
 		List<Allowed> allowedUsers = new ArrayList<Allowed>();
 		
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("mysqldb");
@@ -61,6 +61,74 @@ public class AllowedCollection
 		}
 		
 		return added;
+	}
+	
+	public static boolean deleteAllowedUser(Allowed a)
+	{
+		boolean deleted = false;
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("mysqldb");
+		EntityManager em = emf.createEntityManager();
+		
+		EntityTransaction trans = em.getTransaction();
+		
+		try {
+			trans.begin();
+			
+			List<Allowed> allowedpeeps = new ArrayList<Allowed>(); 
+			TypedQuery<Allowed> q = em.createQuery("FROM allowed WHERE photoid = " + a.getPhotoid(), Allowed.class);
+			allowedpeeps = q.getResultList();
+			
+			Allowed obsolete = null;
+			for(Allowed aa : allowedpeeps)
+			{
+				if(aa.getUserid() == a.getUserid()) {
+					obsolete = a;
+					break;
+				}
+			}			
+			
+			em.remove(obsolete);
+			trans.commit();
+			deleted = true;
+		} catch(Exception e) {
+			if(trans != null) {
+				trans.rollback();
+			}
+			e.printStackTrace();
+		} finally {
+			em.close();
+		}
+		
+		return deleted;
+	}
+	
+	// get all allowed users of a photo
+	public static List<Allowed> getAllowedUsers(int id)
+	{
+		List<Allowed> users = new ArrayList<Allowed>(); 
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("mysqldb");
+		EntityManager em = emf.createEntityManager();
+		
+		EntityTransaction trans = em.getTransaction();
+		
+		try {
+			trans.begin();
+			
+			TypedQuery<Allowed> q = em.createQuery("FROM allowed WHERE photoid = " + id, Allowed.class);
+			users = q.getResultList();
+			
+			trans.commit();
+			
+		} catch(Exception e) {
+			if(trans != null) {
+				trans.rollback();
+			}
+			e.printStackTrace();
+		} finally {
+			em.close();
+		}
+		
+		return users;
 	}
 
 }

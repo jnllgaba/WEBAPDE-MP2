@@ -19,13 +19,13 @@ import niche.collection.NicheCollection;
  * Servlet implementation class Controller
  */
 @WebServlet(urlPatterns= {"/login", "/register"})
-public class HomeController extends HttpServlet {
+public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public HomeController() {
+    public Controller() {
         super();
         // TODO Auto-generated constructor stub
     }

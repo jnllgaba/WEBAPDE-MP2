@@ -18,13 +18,11 @@
     
     <div id = "viewport">
         <div class = "nav-bg"> </div>
-        <nav class = "nav-bar">
-            
+        <nav class = "nav-bar"> 
             <div class = "nav-left">
                 <a class = "nav-home" href = "index.html">
                     <img class = "nav-main-icon" src ="res/icon.png"> 
                     <span class = "nav-item nav-title"> niche </span>
-
                 </a>
             </div>
             
@@ -51,20 +49,18 @@
                             <input class = "login-field" name = "password" type="password"> <br>
                             <input class = "login-button" type='submit' value = "Login"> <br>
                             <input class = "login-check" name = "remember" type="checkbox"> Remember me <br>
+                            <a class = "login-link" href = "register.html"> New Here? Click here to Register! </a>
                         </form>
-                        <form action="register.html">
-                        	<input type="submit" value="New Here? Click here to Register!">
-                        </form> 
                     </div>
+                    
                 </div>
-                <div id = "about" class = "nav-item nav-link">
-                    <form action="about.jsp">
-               	   <input type="submit" value="about">
-                   <!--  <i class="nav-icon fa fa-question-circle-o"></i> -->
-               		</form>
-                </div>
+                <form id = "about" action="about.jsp" class = "nav-item nav-link">
+                    <button class = "about-icon">
+                        <i class="nav-icon fa fa-question-circle-o"> </i>
+                    </button>
+                </form>
             </div>
-        </nav>
+       	</nav>
          <div class = "main-content-container">
              <div class = "menu-container">
                 posts:

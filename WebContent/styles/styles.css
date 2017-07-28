@@ -842,3 +842,19 @@
 .back:hover {
     border-bottom-style: solid;
 }
+
+#about {
+    width: 50px;
+    height: 50px;
+    padding: 0px;
+    margin: 0px;
+    display: flex;
+    align-items: center;
+}
+
+.about-icon {
+    font-size: 35px;
+    border-style: none;
+    bottom: 0px;
+    background-color: transparent;
+}

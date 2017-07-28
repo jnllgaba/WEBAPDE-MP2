@@ -21,12 +21,11 @@
     
     <div id = "viewport">
         <div class = "nav-bg"> </div>
-        <nav class = "nav-bar">
+         <nav class = "nav-bar"> 
             <div class = "nav-left">
                 <a class = "nav-home" href = "index.html">
                     <img class = "nav-main-icon" src ="res/icon.png"> 
                     <span class = "nav-item nav-title"> niche </span>
-
                 </a>
             </div>
             
@@ -41,29 +40,30 @@
             
             <div class = "nav-right">
                 <div class = "nav-login">
-                    <div id = "logout" class = "nav-item nav-link"> 
-                        ${sessionScope.sessionuser}
+                    <div id = "login" class = "nav-item nav-link"> 
+                        login
                         <i class="nav-icon fa fa-user-circle fa-1x"> </i> 
                     </div>
-                    <div class = "logout-form-wrapper"> 
-                            <div class = "logout-form">
-                            <form action="profile.jsp">
-                            <input type="submit" class = "logout-row" value="Profile">
-                                <i class = "fa fa-user-o"> </i>
-                             <!--    <label class = "logout-label"> Feed </label> -->
-                            </form>
-                            <a href = "index.html" class = 'logout-row'>
-                                <i class = "fa fa-sign-out"></i>
-                                <label class = "logout-label"> Logout </label>
-                            </a>
-                        </div>
+                    <div class = "login-form-wrapper"> 
+                        <form class = "login-form" action="home" method="POST">
+                            <label class = "login-label"> username</label>
+                            <input class = "login-field" name = "username" type="text"> <br>
+                            <label class = "login-label"> password</label>
+                            <input class = "login-field" name = "password" type="password"> <br>
+                            <input class = "login-button" type='submit' value = "Login"> <br>
+                            <input class = "login-check" name = "remember" type="checkbox"> Remember me <br>
+                            <a class = "login-link" href = "register.html"> New Here? Click here to Register! </a>
+                        </form>
                     </div>
+                    
                 </div>
-                <div id = "about" class = "nav-item nav-link">
-                    <i class="nav-icon fa fa-question-circle-o"></i>
-                </div>
+                <form id = "about" action="about.jsp" class = "nav-item nav-link">
+                    <button class = "about-icon">
+                        <i class="nav-icon fa fa-question-circle-o"> </i>
+                    </button>
+                </form>
             </div>
-        </nav>
+       	</nav>
              <div class = "main-content-container">
                  <div class = "about-container">
                     <div class = "about-bg">

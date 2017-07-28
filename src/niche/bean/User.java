@@ -1,8 +1,21 @@
 package niche.bean;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity(name="users")
 public class User {
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int userid;
+	@Column(nullable=false)
 	private String username;
+	@Column(nullable=false)
 	private String password;
+	@Column
 	private String description;
 	
 	public User () {
@@ -31,6 +44,12 @@ public class User {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + userid + ", username=" + username + ", password=" + password + ", description=" + description
+				+ "]";
 	}
 	
 	

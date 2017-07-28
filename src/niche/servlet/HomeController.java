@@ -1,6 +1,7 @@
 package niche.servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,11 +13,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import niche.bean.User;
+import niche.collection.NicheCollection;
 
 /**
  * Servlet implementation class Controller
  */
-@WebServlet("/home")
+@WebServlet(urlPatterns= {"/home", "/register"})
 public class HomeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -44,29 +46,30 @@ public class HomeController extends HttpServlet {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		
-		if(username.equals("admin") && password.equals("1234")) {
-			request.setAttribute("un", username);
-			
-			HttpSession session = request.getSession();
-			session.setAttribute("sessionuser", username);
-			
-			User u = new User();
-			u.setUsername("jnllgaba");
-			u.setDescription("taedikoalam");
-			request.setAttribute("user", u);
-			
-			String rm = request.getParameter("remember");
-			if(rm != null) {
-				Cookie usernameCookie = new Cookie("username", username);
-				usernameCookie.setMaxAge(60*60*24*21);
-				response.addCookie(usernameCookie);
-			}
-			
-			RequestDispatcher rd = request.getRequestDispatcher("profile.jsp");
-			rd.forward(request, response);
-		} else {
-			response.sendRedirect("index.html");
+		List<User> users = NicheCollection.getAllUsers();
+		boolean registered = false;
+		for(User u: users) {
+			if(username.equals(u.getUsername()) && password.equals(u.getPassword())) {
+				request.setAttribute("un", username);
+				
+				HttpSession session = request.getSession();
+				session.setAttribute("sessionuser", username);
+				
+				String rm = request.getParameter("remember");
+				if(rm != null) {
+					Cookie usernameCookie = new Cookie("username", username);
+					usernameCookie.setMaxAge(60*60*24*21);
+					response.addCookie(usernameCookie);
+				}
+				
+				RequestDispatcher rd = request.getRequestDispatcher("profile.jsp");
+				rd.forward(request, response);
+				registered = true;
+			} 
 		}
+		if(!registered)
+			response.sendRedirect("index.html");
+		
 	}
 
 }

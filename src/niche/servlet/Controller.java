@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import niche.bean.User;
-import niche.collection.NicheCollection;
+import niche.collection.UserCollection;
 
 /**
  * Servlet implementation class Controller
@@ -65,7 +65,7 @@ public class Controller extends HttpServlet {
 		u.setPassword(password);
 		u.setDescription(description);
 		
-		if(NicheCollection.addUser(u)) 
+		if(UserCollection.addUser(u)) 
 			System.out.println("WIE REGISTERED KANA");
 			
 		response.sendRedirect("index.html");
@@ -77,7 +77,7 @@ public class Controller extends HttpServlet {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		
-		List<User> users = NicheCollection.getAllUsers();
+		List<User> users = UserCollection.getAllUsers();
 		boolean registered = false;
 		for(User u: users) {
 			if(username.equals(u.getUsername()) && password.equals(u.getPassword())) {

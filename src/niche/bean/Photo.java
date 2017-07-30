@@ -40,6 +40,10 @@ public class Photo
 	@JoinTable(name = "photo_tags", joinColumns = { @JoinColumn(name = "photoid") }, inverseJoinColumns = { @JoinColumn(name = "tagid") })
 	private Set <PhotoTag> tags;
 	
+	@ManyToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER )
+	@JoinTable(name = "photo_access", joinColumns = { @JoinColumn(name = "photoid") }, inverseJoinColumns = { @JoinColumn(name = "userid") })
+	private Set <User> hasAccess;
+	
 	public Photo()
 	{
 		
@@ -100,5 +104,13 @@ public class Photo
 
 	public void setTags(Set <PhotoTag> tags) {
 		this.tags = tags;
+	}
+
+	public Set <User> getHasAccess() {
+		return hasAccess;
+	}
+
+	public void setHasAccess(Set <User> hasAccess) {
+		this.hasAccess = hasAccess;
 	}
 }

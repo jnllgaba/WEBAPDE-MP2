@@ -24,9 +24,9 @@
     
     <div id = "viewport">
         <div class = "nav-bg"> </div>
-        <nav class = "nav-bar">
+        <nav class = "nav-bar"> 
             <div class = "nav-left">
-               <form class = "nav-home" action = "view-public">
+                <form class = "nav-home" action = "view-public">
                     <button class = "nav-home" type = "submit"> 
                         <img class = "nav-main-icon" src ="static/res/icon.png"> 
                         <span class = "nav-item nav-title"> niche </span> 
@@ -44,7 +44,7 @@
             </div>
             
             <div class = "nav-right">
-              	<c:choose>
+                <c:choose>
             		<c:when test = "${empty sessionScope.sessionuser}" >
             			<div class = "nav-user">
 		                    <div class = "user nav-item nav-link"> 
@@ -54,11 +54,15 @@
 		                    <div class = "popup-form-wrapper"> 
 		                        <form name = 'login' class = "popup-form" action="login" method="POST" onsubmit = "return validateLogin()">
 		                            <label class = "popup-label"> username</label>
-		                            <input class = "popup-field" name = "username" type="text"> <br>
+		                            <input class = "popup-field" name = "username" id = "login-username" type="text"> <br>
 		                            <label class = "popup-label"> password</label>
-		                            <input class = "popup-field" name = "password" type="password"> <br>
-		                            <input class = "popup-button" type='submit' value = "Login"> <br>
-		                            <input class = "popup-check" name = "remember" type="checkbox"> Remember me <br>
+		                            <input class = "popup-field" name = "password" id = "login-password" type="password"> <br>
+		                            <p class = "popup-label warning"> </p> <br>
+		                            <div class = "popup-row"><input class = "popup-button" type='submit' value = "login"> <br>
+		                            </div>
+                                    <div class = "popup-row">
+                                    <input class = "popup-check" name = "remember" type="checkbox"> remember me <br>
+                                    </div>
 		                        </form>
 		                        <form class = "popup-form" action = "register.html">
 		                            <button type = "submit" class = "popup-link">
@@ -71,13 +75,14 @@
             		<c:otherwise>
             			 <div class = "nav-user">
 							<div class = "user nav-item nav-link"> 
-		                        ${sessionScope.sessionuser}
+		                        ${sessionScope.sessionuser.username}
 		                        <i class="nav-icon fa fa-user-circle fa-1x"> </i> 
 		                    </div>
 		                    <div class = "popup-form-wrapper logout-form"> 
 		                        <div class = "popup-form">
-		                            <form class = "popup-row-form" action="profile">
-		                                <button type="submit" class = "popup-setting-button" value="Profile">
+		                            <form class = "popup-row-form" action="profile" method="GET">
+		                            	<input type = "hidden" name = "user" value = "${sessionScope.sessionuser.userid}">
+		                                <button type="submit" class = "popup-setting-button">
 		                                    <i class = "fa fa-user-o"> </i> Profile 
 		                                </button>
 		                            </form>
@@ -91,13 +96,13 @@
 		                </div>
             		</c:otherwise>
 				</c:choose>  
-                <form id = "about" action="about" class = "nav-item nav-link">
+                <form id = "about" action = "about" class = "nav-item nav-link">
                     <button class = "about-icon">
                         <i class="nav-icon fa fa-question-circle-o"> </i>
                     </button>
                 </form>
             </div>
-        </nav>
+       	</nav>
          <div class = "main-content-container">
              <a onclick="window.history.back()" class = "back">
                 <i class = "fa fa-arrow-left"> </i>    
@@ -109,7 +114,7 @@
                     <img class = "image" src ="${photo.path }">
                  </div>
                      <div class = "info-container">
-              		<a class = "profile?=${photo.user.userid}" href = "profile.html"> <label class = "photo-name"> Name </label> </a> 
+              		<a class = "photo-name" href = "profile?=${photo.user.userid}"> <label class = "photo-name">@${photo.user.username} </label> </a> 
                      <label class = "photo-title"> ${photo.title } </label>
                      <label class = "photo-desc"> ${photo.description} </label>
 					

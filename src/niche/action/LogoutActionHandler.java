@@ -7,6 +7,8 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import niche.service.PhotoService;
+
 public class LogoutActionHandler implements ActionHandler {
 
 	@Override
@@ -19,14 +21,15 @@ public class LogoutActionHandler implements ActionHandler {
 			}
 		}
 		
-		request.getSession().invalidate();
 		
-		request.setAttribute("sessionuser", null);
+		request.getSession().setAttribute("sessionuser", null);
+		request.getSession(false);
 		
+		request.setAttribute("photos", PhotoService.getAllPublicPhotos());
 		request.setAttribute("ispublic", true);
 		request.setAttribute("isprivate", false);
 		
-		response.sendRedirect("index.jsp");
+		request.getRequestDispatcher("index.jsp").forward(request, response);
 		
 	}
 

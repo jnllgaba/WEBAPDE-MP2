@@ -19,8 +19,8 @@ public class ViewPublicActionHandler implements ActionHandler {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getSession().setAttribute("isprivate", false);
-	 	request.getSession().setAttribute("ispublic", true);
+		request.setAttribute("isprivate", false);
+	 	request.setAttribute("ispublic", true);
 	 	request.setAttribute("photos", PhotoService.getAllPublicPhotos());
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
@@ -43,6 +43,7 @@ public class ViewPublicActionHandler implements ActionHandler {
 		TagsService.addPhotoTag(tag2);
 		TagsService.addPhotoTag(tag3);
 		
+		
 		for(int i = 0; i < 5; i++) {
 			User user = new User();
 			user.setUsername("user"+ (i+1));
@@ -50,11 +51,17 @@ public class ViewPublicActionHandler implements ActionHandler {
 			user.setDescription("This is user no. " + (i+1));
 			
 			UserService.addUser(user);
-
+			
 			for(int j = 0; j < 10; j++) {
 				Photo photo = new Photo();
 				photo.setPath("static/res/dummy/300.png");
 				photo.setTitle("Public Photo ID " + (j+1)*(i+1));
+				
+				if(i != 0) {
+					Set <User> users = new HashSet <User> ();
+					users.add(UserService.getUser(i));
+					photo.setHasAccess(users);
+				} 
 				
 				if(j % 2 == 0)
 					photo.setVisible(true);
@@ -66,7 +73,9 @@ public class ViewPublicActionHandler implements ActionHandler {
 				
 				photo.setTags(tags);
 				PhotoService.addPhoto(photo);
+				
 			}
+			
 		}
 	}
 	

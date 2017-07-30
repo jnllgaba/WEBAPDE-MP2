@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import niche.bean.User;
+import niche.service.PhotoService;
 import niche.service.UserService;
 
 public class LoginActionHandler implements ActionHandler {
@@ -34,8 +35,9 @@ public class LoginActionHandler implements ActionHandler {
 			}
 		}
 
-		request.getSession().setAttribute("isprivate", false);
-	 	request.getSession().setAttribute("ispublic", true);
+	 	request.setAttribute("photos", PhotoService.getAllPublicPhotos());
+		request.setAttribute("isprivate", false);
+	 	request.setAttribute("ispublic", true);
 		
 		dispatcher.forward(request, response);
 	}

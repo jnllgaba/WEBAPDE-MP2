@@ -3,7 +3,10 @@ var toggle = false;
 var wordCount = 0;
 
 $(function () {
-    $('.popup-form-wrapper').hide();
+    var string = window.location.href;
+    if(!string.endsWith('register'))
+        $('.popup-form-wrapper').hide();
+    
     
     $('.user').click(function () {
         $('.popup-form-wrapper').slideToggle();

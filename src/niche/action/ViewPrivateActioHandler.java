@@ -15,8 +15,7 @@ public class ViewPrivateActioHandler implements ActionHandler {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.getSession().setAttribute("isprivate", true);
 	 	request.getSession().setAttribute("ispublic", false);
-	 	
-	 	User user = (User) request.getAttribute("sessionuser");
+	 	User user = (User) request.getSession().getAttribute("sessionuser");
 	 	
 	 	request.setAttribute("photos", PhotoService.getPrivatePhotosOfUser(user.getUserid()));
 		request.getRequestDispatcher("index.jsp").forward(request, response);

@@ -942,3 +942,8 @@
 .error-back:hover {
     border-bottom-style: solid;
 }
+
+.visible-icon {
+	font-size: 40px;
+	float: right;
+}

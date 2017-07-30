@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import niche.bean.User;
+import niche.service.PhotoService;
 import niche.service.UserService;
 
 public class RegisterActionHandler implements ActionHandler {
@@ -28,6 +29,9 @@ public class RegisterActionHandler implements ActionHandler {
 			request.setAttribute("error", "db-connection-error");
 			dispatcher.forward(request, response);
 		} else 
-			response.sendRedirect("index.jsp");
+			request.setAttribute("isprivate", false);
+	 		request.setAttribute("ispublic", true);
+	 		request.setAttribute("photos", PhotoService.getAllPublicPhotos());
+			request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 }

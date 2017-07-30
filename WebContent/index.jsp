@@ -9,7 +9,7 @@
 
 <link href="static/css/styles.css" rel="stylesheet" type="text/css" > 
 <link href="static/css/lib/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
+<link rel = "icon" href = "static/res/icon.png">
 <script src = "static/js/lib/jquery-min.js"> </script>
 <script src = "static/js/lib/jQueryRotate.js"> </script>
 <script src = "static/js/index.js"> </script>

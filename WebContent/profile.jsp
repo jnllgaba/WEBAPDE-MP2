@@ -1,31 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<%-- <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
-	PROFILE <br>
-	Saya mo, ${sessionScope.sessionuser}. <br>
-	
-	<br> <a href="logout">Log out</a>
-	<%@ include file="index.html" %>
-</body>
-</html> --%>
-
 <html>
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title> niche </title>
-<link href="styles/styles.css" rel="stylesheet" type="text/css">
-<link href="lib/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
-<script src = "lib/jquery-min.js"> </script>
-<script src = "lib/jQueryRotate.js"> </script>
-<script src = "script/index.js"> </script>
+<link href="static/css/styles.css" rel="stylesheet" type="text/css" > 
+<link href="static/css/lib/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link rel = "icon" href = "static/res/icon.png">
+<script src = "static/js/lib/jquery-min.js"> </script>
+<script src = "static/js/lib/jQueryRotate.js"> </script>
+<script src = "static/js/index.js"> </script>
 
 </head>
 <body>
@@ -38,11 +26,12 @@
         <div class = "nav-bg"> </div>
         <nav class = "nav-bar">
             <div class = "nav-left">
-                <a class = "nav-home" href = "index.html">
-                    <img class = "nav-main-icon" src ="res/icon.png"> 
-                    <span class = "nav-item nav-title"> niche </span>
-
-                </a>
+                <form class = "nav-home" action = "view-public">
+                    <button class = "nav-home" type = "submit"> 
+                        <img class = "nav-main-icon" src ="static/res/icon.png"> 
+                        <span class = "nav-item nav-title"> niche </span> 
+                    </button>
+                </form>
             </div>
             
             <div class = "nav-center-wrapper">
@@ -55,85 +44,100 @@
             </div>
             
             <div class = "nav-right">
-                <div class = "nav-login">
-                    <div id = "logout" class = "nav-item nav-link"> 
-                        ${sessionScope.sessionuser}
-                        <i class="nav-icon fa fa-user-circle fa-1x"> </i> 
-                    </div>
-                    <div class = "logout-form-wrapper"> 
-                            <div class = "logout-form">
-                            <form action="user-public.jsp">
-                            <input type="submit" class = "logout-row" value="Feed">
-                                <i class = "fa fa-user-o"> </i>
-                             <!--    <label class = "logout-label"> Feed </label> -->
-                            </form>
-                            <a href = "index.html" class = 'logout-row'>
-                                <i class = "fa fa-sign-out"></i>
-                                <label class = "logout-label"> Logout </label>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div id = "about" class = "nav-item nav-link">
-                    <i class="nav-icon fa fa-question-circle-o"></i>
-                </div>
+                <c:choose>
+            		<c:when test = "${empty sessionScope.sessionuser.username}" >
+            			<div class = "nav-user">
+		                    <div class = "user nav-item nav-link"> 
+		                        login
+		                        <i class="nav-icon fa fa-user-circle fa-1x"> </i> 
+		                    </div>
+		                    <div class = "popup-form-wrapper"> 
+		                        <form name = 'login' class = "popup-form" action="login" method="POST" onsubmit = "return validateLogin()">
+		                            <label class = "popup-label"> username</label>
+		                            <input class = "popup-field" name = "username" type="text"> <br>
+		                            <label class = "popup-label"> password</label>
+		                            <input class = "popup-field" name = "password" type="password"> <br>
+		                            <input class = "popup-button" type='submit' value = "Login"> <br>
+		                            <input class = "popup-check" name = "remember" type="checkbox"> Remember me <br>
+		                        </form>
+		                        <form class = "popup-form" action = "register.html">
+		                            <button type = "submit" class = "popup-link">
+		                                New here? Click here to register.
+		                            </button>
+		                        </form>
+		                    </div>
+		                </div>
+            		</c:when>
+            		<c:otherwise>
+            			 <div class = "nav-user">
+							<div class = "user nav-item nav-link"> 
+		                        ${sessionScope.sessionuser.username}
+		                        <i class="nav-icon fa fa-user-circle fa-1x"> </i> 
+		                    </div>
+		                    <div class = "popup-form-wrapper logout-form"> 
+		                        <div class = "popup-form">
+		                            <form class = "popup-row-form" action="profile">
+		                                <button type="submit" class = "popup-setting-button" value="Profile">
+		                                    <i class = "fa fa-user-o"> </i> Profile 
+		                                </button>
+		                            </form>
+		                            <form action = "logout" class = 'popup-row-form'>
+		                                <button type = "submit" class = "popup-setting-button" value = "">
+		                                    <i class = "fa fa-sign-out"></i> Logout 
+		                                </button>
+		                            </form>
+		                        </div>
+		                    </div>
+		                </div>
+            		</c:otherwise>
+				</c:choose>  
+                <form id = "about" action="about.jsp" class = "nav-item nav-link">
+                    <button class = "about-icon">
+                        <i class="nav-icon fa fa-question-circle-o"> </i>
+                    </button>
+                </form>
+            </div>
             </div>
         </nav>
          <div class = "main-content-container">
              <div class = "profile-info-container">
                  <p class = "profile-label profile-username-label">
-                    @username
+                    ${user.username}
                  </p>
                  
                  <p class = "profile-label profile-description-label">
-                    description
+                    ${user.description}
                  </p>
              </div>
              <div class = "profile-post-container">
                     <div class = "profile-posts post-container">
-                    <div class = "post">
-                        <a class = "post-title-link" href="#"> <p class = "post-title"> This is a long title it takes up almost two lines </p></a> 
-                         <a class = "post-username-link" href="#"> <p class = "post-username"> @username </p> </a>
-                        <p class = "post-desc"> Hello, world! </p>
-
-                        <img class = "post-image" src ="res/dummy/300.png"/>
-
-                        <div class = "tag-container">
-                            tags:
-                            <div class = "tag">
-                            random
-                            </div>
-
-                            <div class = "tag">
-                            scifi
-                            </div>
-                            <div class = "tag">
-                            scifi
-                            </div>
-                        </div>         
-                    </div>
-                        
-                    <div class = "post">
-                        <a class = "post-title-link" href="#"> <p class = "post-title"> This is a long title it takes up almost two lines </p></a> 
-                         <a class = "post-username-link" href="#"> <p class = "post-username"> @username </p> </a>
-                        <p class = "post-desc"> Hello, world! </p>
-
-                        <img class = "post-image" src ="res/dummy/300.png"/>
-
-                        <div class = "tag-container">
-                            tags:
-                            <div class = "tag">
-                            random
-                            </div>
-
-                            <div class = "tag">
-                            scifi
-                            </div>
-                            <div class = "tag">
-                            scifi
-                            </div>
-                        </div>
-                    </div>
+                     <c:forEach items="${photos}" var="item">
+	             	<div class = "post">
+	             		<a class = "post-title-link" href = "photo?photo=${item.photoid}"> 
+	             			<p class = "post-title">
+	             				${item.title}
+	             			</p>
+	             		</a>
+	             		<a class = "post-username-link" href = "profile?user=${item.user.userid}">
+	             			<p class = "post-username">
+	             				@${item.user.username}
+	             			</p>
+	             		</a>
+	             		
+	             		<p class = "post-desc"> ${item.description} </p>
+	
+	             		<img class = "post-image" src = "${item.path}"/>
+	
+	             		<div class = "tag-container">
+	             			Tags:
+	             			<c:forEach items = "${item.tags}" var = "tagItem">
+	             				<div class = "tag">
+		                        	${tagItem.tag}
+		                    	</div>
+	             			</c:forEach>
+	             		</div>
+	             	</div>
+	             </c:forEach>
                 </div>
                 <div class = "more-container">
                     <p class = "more-message">
@@ -141,8 +145,10 @@
                         <i class = "fa fa-arrow-down"></i>
                     </p>
                 </div>
+                
              </div>
+             
+             
         </div>  
-        </div>
     </body>
 </html>

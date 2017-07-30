@@ -11,10 +11,13 @@ public class User {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int userid;
+	
 	@Column(nullable=false)
 	private String username;
+	
 	@Column(nullable=false)
 	private String password;
+	
 	@Column
 	private String description;
 	
@@ -48,9 +51,15 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [id=" + userid + ", username=" + username + ", password=" + password + ", description=" + description
+		return "User [id=" + getUserid() + ", username=" + username + ", password=" + password + ", description=" + description
 				+ "]";
 	}
-	
-	
+
+	public int getUserid() {
+		return userid;
+	}
+
+	public void setUserid(int userid) {
+		this.userid = userid;
+	}
 }

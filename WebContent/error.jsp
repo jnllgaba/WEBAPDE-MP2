@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%><%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+    pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 
@@ -45,7 +45,7 @@
             </div>
             
             <div class = "nav-right">
-            	<c:choose>
+                <c:choose>
             		<c:when test = "${empty sessionScope.sessionuser.username}" >
             			<div class = "nav-user">
 		                    <div class = "user nav-item nav-link"> 
@@ -53,7 +53,7 @@
 		                        <i class="nav-icon fa fa-user-circle fa-1x"> </i> 
 		                    </div>
 		                    <div class = "popup-form-wrapper"> 
-		                        <form class = "popup-form" action="login" method="POST">
+		                        <form onsubmit = "return validateLogin()" name = 'login' class = "popup-form" action="login" method="POST">
 		                            <label class = "popup-label"> username</label>
 		                            <input class = "popup-field" name = "username" type="text"> <br>
 		                            <label class = "popup-label"> password</label>
@@ -61,7 +61,7 @@
 		                            <input class = "popup-button" type='submit' value = "Login"> <br>
 		                            <input class = "popup-check" name = "remember" type="checkbox"> Remember me <br>
 		                        </form>
-		                        <form class = "popup-form" action = "register.html">
+		                        <form name = 'register' class = "popup-form" action = "register.html">
 		                            <button type = "submit" class = "popup-link">
 		                                New here? Click here to register.
 		                            </button>
@@ -100,29 +100,32 @@
             </div>
        	</nav>
              <div class = "main-content-container">
-                 <div class = "about-container">
-                    <div class = "about-bg">
-                 
-                     </div>
-
-                     <div class = "about-info">
-
-                        <h1 class = "about-title">
-                        About niche.
-                         </h1>
-                         <p class = "about-defn">  <b> niche (n.) </b>  a place, employment, status, or activity for which a person or thing is best fitted </p>
-                         <p class = "about-desc" style="text-align:justify"> "niche." was developed in accordance to the specifications of the second Machine Problem for WEBAPDE. The group was tasked  
-                         								to create a web application that allows its users to share images publicly and privately to a chosen set of users with the use
-                         								of various web development tools such as HTML, CSS, JS, JSP EL, and Servlets.</p>
-                         <p class = "about-passed"> Passed by: <br>
-                         <label class = "about-member"> Paragas, Sean </label> <br>
-                        <label class ="about-member"> Ticug, Jonal Ray </label> <br>
-                         <label class ="about-member"> Gaba, Janelle Marie </label>
-                        </p>
-                     </div>
-
-                 </div>
-
+                 <c:choose>
+            		<c:when test = "${error == 'restricted-access-error'}" >
+		                 <div class = "error-message-container">
+		                     <div class = "error-content">
+		                        <i class = "error-small-icon fa fa-lock"> </i>
+		                         <i class = "error-large-icon fa fa-photo"> </i>
+		                     </div>
+		                     Oops! It seems like you don't have access to this photo. 
+		                     <br>
+		                     <a class = "error-back" onclick = "window.history.back()"> <i class = "fa fa-arrow-left"> </i>
+		                         Back </a>
+		                </div>
+		            </c:when>
+		            <c:when test = "${error == 'db-connection-error' }">
+		                 <div class = "error-message-container">
+		                     <div class = "error-content">
+		                        <i class = "error-small-icon fa fa-close"> </i>
+		                         <i class = "error-large-icon fa fa-database"> </i>
+		                     </div>
+		                     Oops! There seems to be a problem with the database.
+		                     <br>
+		                     <a class = "error-back" onclick = "window.history.back()"> <i class = "fa fa-arrow-left"> </i>
+		                         Back </a>
+		                </div>
+		            </c:when>
+                </c:choose>
             </div>
         </div>
     </body>

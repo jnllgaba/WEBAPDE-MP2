@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%><%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+    pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 
@@ -24,15 +24,14 @@
     
     <div id = "viewport">
         <div class = "nav-bg"> </div>
-         <nav class = "nav-bar"> 
+        <nav class = "nav-bar">
             <div class = "nav-left">
-                <form class = "nav-home" action = "view-public">
+               <form class = "nav-home" action = "view-public">
                     <button class = "nav-home" type = "submit"> 
                         <img class = "nav-main-icon" src ="static/res/icon.png"> 
                         <span class = "nav-item nav-title"> niche </span> 
                     </button>
                 </form>
-                </a>
             </div>
             
             <div class = "nav-center-wrapper">
@@ -45,15 +44,15 @@
             </div>
             
             <div class = "nav-right">
-            	<c:choose>
-            		<c:when test = "${empty sessionScope.sessionuser.username}" >
+              	<c:choose>
+            		<c:when test = "${empty sessionScope.sessionuser}" >
             			<div class = "nav-user">
 		                    <div class = "user nav-item nav-link"> 
 		                        login
 		                        <i class="nav-icon fa fa-user-circle fa-1x"> </i> 
 		                    </div>
 		                    <div class = "popup-form-wrapper"> 
-		                        <form class = "popup-form" action="login" method="POST">
+		                        <form name = 'login' class = "popup-form" action="login" method="POST" onsubmit = "return validateLogin()">
 		                            <label class = "popup-label"> username</label>
 		                            <input class = "popup-field" name = "username" type="text"> <br>
 		                            <label class = "popup-label"> password</label>
@@ -72,7 +71,7 @@
             		<c:otherwise>
             			 <div class = "nav-user">
 							<div class = "user nav-item nav-link"> 
-		                        ${sessionScope.sessionuser.username}
+		                        ${sessionScope.sessionuser}
 		                        <i class="nav-icon fa fa-user-circle fa-1x"> </i> 
 		                    </div>
 		                    <div class = "popup-form-wrapper logout-form"> 
@@ -98,32 +97,34 @@
                     </button>
                 </form>
             </div>
-       	</nav>
-             <div class = "main-content-container">
-                 <div class = "about-container">
-                    <div class = "about-bg">
-                 
+        </nav>
+         <div class = "main-content-container">
+             <a onclick="window.history.back()" class = "back">
+                <i class = "fa fa-arrow-left"> </i>    
+                back
+             </a>
+             
+             <div class = "photo-container"> 
+                 <div class = "image-container">
+                    <img class = "image" src ="${photo.path }">
+                 </div>
+                     <div class = "info-container">
+              		<a class = "profile?=${photo.user.userid}" href = "profile.html"> <label class = "photo-name"> Name </label> </a> 
+                     <label class = "photo-title"> ${photo.title } </label>
+                     <label class = "photo-desc"> ${photo.description} </label>
+					
+                    <div class = "tag-container">
+							tags:
+                         	<c:forEach items = "${photo.tags}" var = "item">
+	                         	<a class = "tag"> 
+	                                ${item.tag}
+	                            </a>
+                         	</c:forEach>
                      </div>
-
-                     <div class = "about-info">
-
-                        <h1 class = "about-title">
-                        About niche.
-                         </h1>
-                         <p class = "about-defn">  <b> niche (n.) </b>  a place, employment, status, or activity for which a person or thing is best fitted </p>
-                         <p class = "about-desc" style="text-align:justify"> "niche." was developed in accordance to the specifications of the second Machine Problem for WEBAPDE. The group was tasked  
-                         								to create a web application that allows its users to share images publicly and privately to a chosen set of users with the use
-                         								of various web development tools such as HTML, CSS, JS, JSP EL, and Servlets.</p>
-                         <p class = "about-passed"> Passed by: <br>
-                         <label class = "about-member"> Paragas, Sean </label> <br>
-                        <label class ="about-member"> Ticug, Jonal Ray </label> <br>
-                         <label class ="about-member"> Gaba, Janelle Marie </label>
-                        </p>
-                     </div>
-
                  </div>
 
-            </div>
+             </div>
+        </div>
         </div>
     </body>
 </html>

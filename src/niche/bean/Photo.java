@@ -1,10 +1,18 @@
 package niche.bean;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 @Entity(name="photos")
 public class Photo 
@@ -12,16 +20,25 @@ public class Photo
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int photoid;
+	
 	@Column(nullable=false)
-	private int userid;
-	@Column(nullable=false)
-	private String type;
+	private boolean visible;
+	
 	@Column(nullable=false)
 	private String description;
+	
 	@Column(nullable=false)
 	private String title;
+	
 	@Column(nullable=false)
-	private String photo;
+	private String path;
+    
+	@ManyToOne(cascade = CascadeType.ALL)
+	private User user;
+	
+	@ManyToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER )
+	@JoinTable(name = "photo_tags", joinColumns = { @JoinColumn(name = "photoid") }, inverseJoinColumns = { @JoinColumn(name = "tagid") })
+	private Set <PhotoTag> tags;
 	
 	public Photo()
 	{
@@ -34,22 +51,6 @@ public class Photo
 
 	public void setPhotoid(int photoid) {
 		this.photoid = photoid;
-	}
-
-	public int getUserid() {
-		return userid;
-	}
-
-	public void setUserid(int userid) {
-		this.userid = userid;
-	}
-
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
 	}
 
 	public String getDescription() {
@@ -67,19 +68,37 @@ public class Photo
 	public void setTitle(String title) {
 		this.title = title;
 	}
-
-	public String getPhoto() {
-		return photo;
+	
+	public User getUser() {
+		return user;
 	}
 
-	public void setPhoto(String photo) {
-		this.photo = photo;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
-	@Override
-	public String toString() {
-		return "Photo [photoid=" + photoid + ", userid=" + userid + ", type=" + type + ", description=" + description
-				+ ", title=" + title + ", photo=" + photo + "]";
+	public String getPath() {
+		return path;
 	}
-		
+
+	public void setPath(String path) {
+		this.path = path;
+	}
+
+
+	public boolean isVisible() {
+		return visible;
+	}
+
+	public void setVisible(boolean visible) {
+		this.visible = visible;
+	}
+
+	public Set <PhotoTag> getTags() {
+		return tags;
+	}
+
+	public void setTags(Set <PhotoTag> tags) {
+		this.tags = tags;
+	}
 }

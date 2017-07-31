@@ -17,8 +17,10 @@ import niche.action.PhotoActionHandler;
 import niche.action.PostActionHandler;
 import niche.action.ProfileActionHandler;
 import niche.action.RegisterActionHandler;
+import niche.action.SearchActionHandler;
 import niche.action.ViewPrivateActioHandler;
 import niche.action.ViewPublicActionHandler;
+import niche.action.WelcomeActionHandler;
 
 /**
  * Servlet implementation class Controller
@@ -34,6 +36,8 @@ class URLPatterns {
 	public final static String ABOUT = "/about";
 	public final static String PROFILE = "/profile";
 	public final static String PHOTO = "/photo";
+	public final static String WELCOME = "/welcome";
+	public static final String SEARCH = "/search";
 	
 }
 
@@ -45,7 +49,9 @@ class URLPatterns {
 							URLPatterns.VIEW_PRIVATE, 
 							URLPatterns.ABOUT, 
 							URLPatterns.PROFILE,
-							URLPatterns.PHOTO} )
+							URLPatterns.PHOTO,
+							URLPatterns.WELCOME,
+							URLPatterns.SEARCH} )
 public class NicheController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private HashMap <String, ActionHandler> actions;
@@ -63,6 +69,8 @@ public class NicheController extends HttpServlet {
         actions.put(URLPatterns.VIEW_PRIVATE, new ViewPrivateActioHandler());
         actions.put(URLPatterns.ABOUT, new AboutActionHandler());
         actions.put(URLPatterns.PROFILE, new ProfileActionHandler());
+        actions.put(URLPatterns.WELCOME, new WelcomeActionHandler());
+        actions.put(URLPatterns.SEARCH, new SearchActionHandler());
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -17,7 +17,7 @@ public class PhotoActionHandler implements ActionHandler {
 		int id = Integer.parseInt(request.getParameter("photo"));
 		
 		Photo photo = PhotoService.getPhoto(id);
-		User user = (User) request.getAttribute("sessionuser");
+		User user = (User) request.getSession().getAttribute("sessionuser");
 		
 		
 		if(photo.isVisible()) {

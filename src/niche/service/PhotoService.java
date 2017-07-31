@@ -1,6 +1,7 @@
 package niche.service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -56,7 +57,7 @@ private static final String COL_USERID = "user_userid";
 			TypedQuery<Photo> q = em.createQuery("FROM photos where " + COL_VISIBLE + " = '0' AND " +
 														COL_USERID + " = " + userid, Photo.class);
 			photos = q.getResultList();
-			
+			Collections.reverse(photos);
 			trans.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -80,7 +81,8 @@ private static final String COL_USERID = "user_userid";
 			trans.begin();
 			TypedQuery<Photo> q = em.createQuery("FROM photos where " + COL_VISIBLE + " = '1'", Photo.class);
 			photos = q.getResultList();
-			
+
+			Collections.reverse(photos);
 			trans.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -104,7 +106,8 @@ private static final String COL_USERID = "user_userid";
 			trans.begin();
 			TypedQuery<Photo> q = em.createQuery("FROM photos where " + COL_USERID + " = " + id, Photo.class);
 			photos = q.getResultList();
-			
+
+			Collections.reverse(photos);
 			trans.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -242,7 +245,7 @@ private static final String COL_USERID = "user_userid";
 			TypedQuery<Photo> q = em.createQuery("FROM photos where " + COL_VISIBLE + " = '1' AND " +
 														COL_USERID + " = " + userid, Photo.class);
 			photos = q.getResultList();
-			
+			Collections.reverse(photos);
 			trans.commit();
 		} catch (Exception e) {
 			e.printStackTrace();

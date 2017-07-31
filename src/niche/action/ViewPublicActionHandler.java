@@ -20,8 +20,8 @@ public class ViewPublicActionHandler implements ActionHandler {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setAttribute("isprivate", false);
-	 	request.setAttribute("ispublic", true);
-	 	request.setAttribute("photos", PhotoService.getAllPublicPhotos());
+		request.setAttribute("ispublic", true);
+		request.setAttribute("photos", PhotoService.getAllPublicPhotos());
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 	

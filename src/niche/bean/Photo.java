@@ -44,6 +44,8 @@ public class Photo
 	@JoinTable(name = "photo_access", joinColumns = { @JoinColumn(name = "photoid") }, inverseJoinColumns = { @JoinColumn(name = "userid") })
 	private Set <User> hasAccess;
 	
+	public final static String FILE_PATH = "path/to/photos/";
+	
 	public Photo()
 	{
 		
@@ -112,5 +114,11 @@ public class Photo
 
 	public void setHasAccess(Set <User> hasAccess) {
 		this.hasAccess = hasAccess;
+	}
+
+	@Override
+	public String toString() {
+		return "Photo [photoid=" + photoid + ", visible=" + visible + ", description=" + description + ", title="
+				+ title + ", path=" + path + ", user=" + user + ", tags=" + tags + ", hasAccess=" + hasAccess + "]";
 	}
 }

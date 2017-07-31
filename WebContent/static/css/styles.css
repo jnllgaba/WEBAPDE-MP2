@@ -143,6 +143,45 @@
     flex-direction: row;
 }
 
+.tag-container .tag {
+    font-family: "Open Sans";
+}
+
+.search {
+    
+}
+
+.share {
+    border-style: none;
+    background-color: black;
+    opacity: 0.8;
+    color: white;
+    font-family: "Open Sans";
+    padding: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    transition: 0.5s;
+}
+
+.share:hover {
+    opacity: 1.0;
+}
+
+.users {
+    font-size: 20px;
+    font-family: "Open Sans";
+    background-color: transparent;
+    border-color: black;
+}
+
+#users option{
+    font-family: "Open Sans";
+    background-color: black;
+    color: white;
+}
+
+
+
 .nav-center-wrapper {
     margin: auto;
     width: 30%;
@@ -386,10 +425,15 @@
     font-size: 30px;
     margin: 0 20px;
     padding-top: 20px;
+    transition: 0.3s;
 }
 
 .post-title-link {
     text-decoration: none;
+}
+
+.post-title:hover {
+	text-decoration: underline;
 }
 
 .post-desc,  .post-username {
@@ -861,10 +905,11 @@
 }
 
 .photo-name {
-    margin-left: 20px;
+	margin-left: 10px;
     font-size: 30px;
     text-decoration: none;
     color: black;
+    cursor: pointer;
 }
 
 .photo-title {
@@ -944,6 +989,5 @@
 }
 
 .visible-icon {
-	font-size: 40px;
-	float: right;
+	font-size: 20%;
 }

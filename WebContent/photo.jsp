@@ -118,6 +118,17 @@
                      <label class = "photo-title"> ${photo.title } </label>
                      <label class = "photo-desc"> ${photo.description} </label>
 					
+					<div class = "tag-container">
+						<i class = "fa fa-user">
+							<c:forEach items = "${photo.hasAccess }" var = "item"> 
+								<a class = "tag" href = "profile?user=${item.userid}">
+									@${item.username}
+								</a>
+							</c:forEach>
+						</i>
+					</div>
+					
+					
                     <div class = "tag-container">
 							tags:
                          	<c:forEach items = "${photo.tags}" var = "item">
@@ -126,6 +137,21 @@
 	                            </a>
                          	</c:forEach>
                      </div>
+                     
+                                         <div class = "tag-container">
+                        					
+                    <input list="users" class = "users" name="users">
+                      <datalist id="users">
+                        <option value="user1">
+                        <option value="user2">
+                        <option value="user3">
+                        <option value="user4">
+                        <option value="user5">
+                      </datalist> 
+                        <button class = "share">
+                            share 
+                    </button>
+                    </div>   
                  </div>
 
              </div>

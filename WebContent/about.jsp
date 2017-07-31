@@ -37,10 +37,10 @@
             
             <div class = "nav-center-wrapper">
                 <div class = "nav-center"> 
-                    <input class = "nav-item nav-field" type = "text" placeHolder = "Search by tags">
-                    <button id="search">
+                          <input id = "search" class = "nav-item nav-field" type = "text" placeHolder = "Search by tags">
+                    <a id="search" href="search?tag='TAG1">
                         <i class="nav-item nav-icon fa fa-search fa-21"> </i> 
-                    </button>
+                    </a>
                 </div>
             </div>
             

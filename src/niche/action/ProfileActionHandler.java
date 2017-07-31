@@ -22,7 +22,6 @@ public class ProfileActionHandler implements ActionHandler {
 		} else if (sessionuser.getUserid() == user.getUserid()) {
 			request.setAttribute("photos", PhotoService.getPhotosOfUser(user.getUserid()));
 		} else {
-			//view same users of photos
 			request.setAttribute("photos", PhotoService.getPublicPhotosOfUser(user.getUserid()));
 		}
 		

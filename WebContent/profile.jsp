@@ -120,17 +120,17 @@
 	             		<a class = "post-title-link" href = "photo?photo=${item.photoid}"> 
 	             			<p class = "post-title">
 	             				${item.title}
+	             				<c:choose>
+			             			<c:when test = "${item.visible}">
+			             				<i class = "visible-icon fa fa-globe"></i>	
+			             			</c:when>
+			             			<c:otherwise>
+			             				<i class = "visible-icon fa fa-lock"></i>
+			             			</c:otherwise>
+			             		</c:choose>
 	             			</p>
 	             		</a>
 	             		
-	             		<c:choose>
-	             			<c:when test = "${item.visible}">
-	             				<i class = "visible-icon fa fa-globe"></i>	
-	             			</c:when>
-	             			<c:otherwise>
-	             				<i class = "visible-icon fa fa-lock"></i>
-	             			</c:otherwise>
-	             		</c:choose>
 	             		<a class = "post-username-link" href = "profile?user=${item.user.userid}">
 	             			<p class = "post-username">
 	             				@${item.user.username}

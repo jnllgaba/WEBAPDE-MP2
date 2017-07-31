@@ -36,10 +36,10 @@
             
             <div class = "nav-center-wrapper">
                 <div class = "nav-center"> 
-                    <input id = "search" class = "nav-item nav-field" type = "text" placeHolder = "Search by tags">
-                    <a id="search" href="search?tag=TAG1">
+                    <input class = "nav-item nav-field" type = "text" placeHolder = "Search by tags">
+                    <button id="search">
                         <i class="nav-item nav-icon fa fa-search fa-21"> </i> 
-                    </a>
+                    </button>
                 </div>
             </div>
             
@@ -103,46 +103,10 @@
                 </form>
             </div>
        	</nav>
-         <div class = "main-content-container">
+         <div class = "main-content-container">    
              <div class = "menu-container">
-                posts:
-                 <form action="view-public" method ="POST">
-                 	<c:choose>
-                 		<c:when test = "${ispublic eq true}">
-	                 		<button type="submit" class = "menu-button menu-button-selected">
-	                        	<i class = "fa fa-globe fa-3x"> </i> public 
-	                    	</button>  
-                 		</c:when>
-                 		<c:otherwise>
-                 			<button type="submit" class = "menu-button">
-	                        	<i class = "fa fa-globe fa-3x"> </i> public 
-	                    	</button>  
-                 		</c:otherwise>
-                 	</c:choose>
-                 </form>
-                 <c:choose>
-            		<c:when test = "${not empty sessionScope.sessionuser}" >
-            			<c:choose>
-			                <c:when test = "${isprivate eq true}">
-		                 		<div class = "divider"> </div>
-				                <form id = "user-private" action = "view-private"> 
-				                    <button type="submit" class = "menu-button menu-button-selected">
-				                        <i class = "fa fa-lock fa-3x"> </i> private 
-				                    </button>   
-				                 </form>
-	                 		</c:when>
-	                 		<c:otherwise>
-	                 			<div class = "divider"> </div>
-				                <form id = "user-private" action = "view-private"> 
-				                    <button type="submit" class = "menu-button">
-				                        <i class = "fa fa-lock fa-3x"> </i> private 
-				                    </button>   
-				                 </form>
-	                 		</c:otherwise>
-	                 	</c:choose>
-            	 	</c:when>
-            	 </c:choose>
-             </div>
+                Search results for ${tag}
+               </div>
 	            <div class = "post-container">
 	             <c:forEach items="${photos}" var="item">
 	             	<div class = "post">

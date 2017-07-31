@@ -21,10 +21,12 @@ $(function () {
             var delButton = document.createElement('i');
             var hidden = document.createElement('input');
             var value = $('#tagNum').val();
+            var value = parseInt(value);
             
+            console.log(value+1);
             $(hidden).attr('type', 'hidden');
             $(hidden).attr('name', 'tag' + value);
-            $(hidden).val('titleStr');
+            $(hidden).val(titleStr);
             
             $(tag).addClass('upload-tag');
             $(title).addClass('upload-tag-title');
@@ -34,10 +36,10 @@ $(function () {
 
             $(delButton).click(function() {
                 $(tag).remove();
-                $('#tagNum').val($('#tagNum')-1);
+                $('#tagNum').val(value-1);
             });
             
-            $('#tagNum').val($('#tagNum')+1);
+            $('#tagNum').val(value+1);
             $(title).html(titleStr);
             $(tag).append(title);
             $(tag).append(delButton);
@@ -108,7 +110,6 @@ function charLimit(limitField, limitCount, limitNum) {
             $('.reg-area-update').removeClass('warning');
     }
     
-    
     $('.reg-area-update').html((limitNum - limitCount) + "/" + limitNum);
 }
 
@@ -140,4 +141,30 @@ function validateRegistration () {
 		$('.reg-form .warning').html("username is empty!");
 		return false;
 	}
+}
+
+function validateUpload() {
+	var isValid = true;
+	var message = "";
+	var file = $('#file').val();
+	var title = $('#title').val();
+    
+	if(file.trim() == "") {
+		message += "no file selected <br>";
+		isValid = false;
+	}
+    
+    if (title.trim() == "") {
+		message += "no title input <br>";
+		isValid = false;
+	}
+    
+    if (!$('#pub').is(":checked") || !$('#pri').is(":checked")  ) {
+		message += "did not select if private or public! <br>";
+		isValid = false;
+	}
+	
+	$('#warning-upload').html(message);
+    if(!isValid)
+	   return false;
 }

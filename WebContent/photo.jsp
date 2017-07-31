@@ -158,7 +158,7 @@
 					</c:choose>
 					
                      <c:choose>
-						<c:when test = ${not empty sessionScope.sessionuser}>
+						<c:when test = "${not empty sessionScope.sessionuser}">
 		                    <div class = "tag-container">
                         					
 			                    <input list="users" class = "users" name="users">

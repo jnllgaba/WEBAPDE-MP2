@@ -138,20 +138,43 @@
                          	</c:forEach>
                      </div>
                      
-                                         <div class = "tag-container">
+                     <c:choose>
+						<c:when test = ${sessionScope.sessionuser.userid == photo.user.userid}>
+		                    <div class = "tag-container">
                         					
-                    <input list="users" class = "users" name="users">
-                      <datalist id="users">
-                        <option value="user1">
-                        <option value="user2">
-                        <option value="user3">
-                        <option value="user4">
-                        <option value="user5">
-                      </datalist> 
-                        <button class = "share">
-                            share 
-                    </button>
-                    </div>   
+			                    <input list="users" class = "users" name="users">
+			                      <datalist id="users">
+			                        <option value="tag1">
+			                        <option value="tag2">
+			                        <option value="tag3">
+			                        <option value="tag4">
+			                        <option value="tag5">
+			                      </datalist> 
+			                        <button class = "share">
+			                            Add tag 
+			                    </button>
+                    		</div>   
+						</c:when>
+					</c:choose>
+					
+                     <c:choose>
+						<c:when test = ${not empty sessionScope.sessionuser}>
+		                    <div class = "tag-container">
+                        					
+			                    <input list="users" class = "users" name="users">
+			                      <datalist id="users">
+			                        <option value="user1">
+			                        <option value="user2">
+			                        <option value="user3">
+			                        <option value="user4">
+			                        <option value="user5">
+			                      </datalist> 
+			                        <button class = "share">
+			                            share 
+			                    </button>
+                    		</div>   
+						</c:when>
+					</c:choose>
                  </div>
 
              </div>

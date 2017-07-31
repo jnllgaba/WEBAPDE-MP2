@@ -139,7 +139,7 @@
                      </div>
                      
                      <c:choose>
-						<c:when test = ${sessionScope.sessionuser.userid == photo.user.userid}>
+						<c:when test = "${sessionScope.sessionuser.userid == photo.user.userid}">
 		                    <div class = "tag-container">
                         					
 			                    <input list="users" class = "users" name="users">
